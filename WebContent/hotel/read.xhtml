@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Base de datos de hoteles</title>
+</head>
+<h:body>
+<ui:composition template="../WEB-INF/templates/template.xhtml">
+		<ui:define name="header">
+			<h:graphicImage class="imagen" value="../resources/images/logo.png" />
+			<br />
+			<h:button outcome="/customer/newCustomer.xhtml" class="button"
+				value="Regístrate" />
+			<h:button outcome="/login.xhtml" class="button" value="Identíficate" />
+			<br />
+			<h:graphicImage class="carro"
+				value="../resources/images/empty-cart-dark_small.png" />
+			<script type="text/javascript" src="../resources/javascript/prime.js"></script>
+		</ui:define>
+		<ui:define name="content" class="content">
+			<h2>Base de datos de hoteles</h2>
+	<h:form>
+		<p:dataTable value="#{hotelBean.hotel}" var="actor" rows="10"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+
+			
+			<p:column headerText="Nombre del hotel">
+				<h:outputText value="#{hoteloffer.name}" />
+			</p:column>
+			
+			<p:column headerText="Precio del hotel">
+				<h:outputText value="#{hoteloffer.price}" />
+			</p:column>
+			<p:column headerText="Id del municipio">
+				<h:outputText value="#{hoteloffer.idMunicipio}" />
+			</p:column>
+
+                <f:facet name="paginatorTopLeft">
+				<p:commandButton type="button" icon="pi pi-refresh" />
+			</f:facet>
+
+			<f:facet name="paginatorBottomRight">
+				<p:commandButton type="button" icon="pi pi-cloud-upload" />
+			</f:facet>
+
+
+		</p:dataTable>
+	</h:form>
+
+			
+		</ui:define>
+		<ui:define name="footer">
+		By Verónica González Almeida   
+	</ui:define>
+	</ui:composition>
+</h:body>
+</html>

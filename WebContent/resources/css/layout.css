@@ -1,0 +1,81 @@
+@charset "ISO-8859-1";
+
+.button {
+	background-color: cornflowerblue;
+	border: none;
+	padding: 0.4em;
+	color: white;
+	font-size: 1em;
+	margin: 0.4em;
+	
+}
+
+.header {
+	background-image: url('../images/portada.png');
+	box-shadow: 10px 12px 10px -6px black;
+	padding:0.3em;
+}
+
+.button:hover {
+	background-color: white;
+	color: black;
+	box-shadow: 0px 0px 15px 15px #1686f5;
+	text-decoration: underline;
+	transition:all .3s ease-in-out;
+}
+
+.footer {
+	background-color: cornflowerblue;
+	padding: 0.2em;
+	font-weight:bold;
+}
+
+.content {
+	background-image: url('../images/vacaciones.jpg');
+	box-shadow: 10px 12px 10px -6px black;
+}
+
+.content .imagen {
+	position: relative;
+	left: 24em;
+}
+
+.imagen {
+	position: relative;
+	left: 36em;
+}
+
+.button, .logo {
+	position: relative;
+	left: 34em;
+}
+
+.content .imagen:hover {
+	border-radius: 40%;
+	-webkit-border-radius: 40%;
+	box-shadow: 0px 0px 15px 15px #1686f5;
+	-webkit-box-shadow: 0px 0px 15px 15px #1686f5;
+}
+
+.button {
+	left: 38em;
+}
+
+.content .button {
+	left: 38em;
+	width:9em;
+	height:3em;
+}
+
+
+h1 {
+	text-align: center;
+	text-shadow: 3px 3px 2px black;
+	font-size:350%;
+}
+
+.carro{
+	width:5em;
+	position:relative;
+	bottom:5em;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<title>Vacaciones en Canarias</title>
+</head>
+<h:body>
+	<ui:composition template="../WEB-INF/templates/template.xhtml">
+		<ui:define name="header">
+			<h:graphicImage class="imagen" value="../resources/images/logo.png" />
+			<br />
+			<h:button outcome="/customer/newCustomer.xhtml" class="button"
+				value="Regístrate" />
+			<h:button outcome="/login.xhtml" class="button" value="Identíficate" />
+			<br />
+			<h:graphicImage class="carro"
+				value="../resources/images/empty-cart-dark_small.png" />
+			<script type="text/javascript" src="../resources/javascript/prime.js"></script>
+		</ui:define>
+		<ui:define name="content" class="content">
+			<h1>Vacaciones de lujo en Canarias</h1>
+			<h:form>
+				<h:panelGroup id="provincias">
+					<p:outputLabel for="cboProvincias" value="Provincia: " />
+					<p:selectOneMenu id="cboProvincias"
+						value="#{hotelSearchBean.id_provincia}">
+						<p:ajax event="change"
+							listener="#{hotelSearchBean.onCboProvinciasChange()}"
+							update="cboMunicipios" />
+						<f:selectItem itemLabel="Selecciona provincia"
+							noSelectionOption="true" />
+						<f:selectItems value="#{hotelSearchBean.provincia}" var="c"
+							itemLabel="#{c.nombre}" itemValue="#{c.id_provincia}" />
+					</p:selectOneMenu>
+				</h:panelGroup>
+
+				<h:panelGroup id="municipios">
+					<p:outputLabel for="cboMunicipios" value=" Municipio: " />
+					<p:selectOneMenu id="cboMunicipios"
+						value="#{hotelSearchBean.id_municipio}">
+						<f:selectItem itemLabel="Selecciona municipio"
+							noSelectionOption="true" />
+						<f:selectItems value="#{hotelSearchBean.municipio}" var="c"
+							itemLabel="#{c.nombre}" itemValue="#{c.id_municipio}" />
+					</p:selectOneMenu>
+				</h:panelGroup>
+				<br />
+				<br />
+				<p:outputLabel for="popup" value="Fecha de entrada:" />
+				<p:calendar id="popup" value="#{hotelFechaBean.dateEntrada}"
+					placeholder="__/__/____" />
+
+
+				<p:outputLabel for="popup2" value=" Fecha de salida:" />
+				<p:calendar id="popup2" value="#{hotelFechaBean.dateSalida}"
+					placeholder="__/__/____" />
+				<br />
+				<br />
+				<p:commandButton value="Buscar" action="/searchResults" id="withIcon" class="button"
+					update="cboMunicipios" >
+					<f:setPropertyActionListener value="#{hotelSearchBean.id_municipio}" target="#{hotelSearchBean.municipiobuscado}"></f:setPropertyActionListener>
+					</p:commandButton>
+			</h:form>
+
+		</ui:define>
+		<ui:define name="footer">
+		By Verónica González Almeida   
+	</ui:define>
+	</ui:composition>
+</h:body>
+</html>
