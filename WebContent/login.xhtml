@@ -1,19 +1,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:composite="http://java.sun.com/jsf/composite"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<title>Not present in rendered output</title>
-</head>
-<body>
-<composite:interface>
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Vacaciones en Canarias</title>
+</h:head>
+<h:body>
+	<ui:composition template="WEB-INF/templates/template.xhtml">
+		<ui:define name="header">
+			<ui:insert name="header">
 
-</composite:interface>
-<composite:implementation>
+			</ui:insert>
+		</ui:define>
+		<ui:define name="content">
+			<h1>Vacaciones de lujo en Canarias</h1>
+			<h:form>
+				<h:panelGroup id="usuarios">
+					<p:outputLabel for="userName" value="Lista de usuarios: " />
+					<h:selectOneMenu id="userName" value="${usuarioBean.userName}">
+						<f:selectItem itemLabel="Seleccione usuario"
+							noSelectionOption="true" />
+						<f:selectItems value="${usuarioBean.usuarios}" var="c"
+							itemLabel="${c.userName}" itemValue="${c.userName}" />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<br />
+				<br />
+				<p:outputLabel for="password" value="Contraseña: " />
+				<h:inputText id="password" value="${usuarioBean.password}" />
+				<br />
+				<br />
+				
+				<!-- <p:linkButton outcome="${usuarioBean.save()}" value="Usuario"></p:linkButton> -->
+				<h:commandButton value="Usuario" action="#{usuarioBean.save()}"  />
+			</h:form>
 
-</composite:implementation>
-</body>
+		</ui:define>
+		<ui:define name="footer">
+		By Verónica González Almeida   
+	</ui:define>
+	</ui:composition>
+</h:body>
 </html>

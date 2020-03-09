@@ -19,12 +19,15 @@ import es.cifpcm.forvagosgonzalezv.web.model.Provincia;
 @RequestScoped
 public class HotelSearchBean extends HotelFechaBean {
 	private static final long serialVersionUID = 1L;
+	//private final Logger logger = LoggerFactory.getLogger(HotelSearchBean.class);
 
 	private Short id_provincia;
 	private Short id_municipio;
 
 	private List<Municipio> municipio;
 	private List<Provincia> provincia;
+	
+	
 	
 	
 	
@@ -35,10 +38,6 @@ public class HotelSearchBean extends HotelFechaBean {
 	public void init() {
 		this.municipio = masterDataBean.getMunicipios();
 		this.provincia = masterDataBean.getProvincias();
-
-		
-		
-		
 	}
 
 	/**
@@ -86,15 +85,15 @@ public class HotelSearchBean extends HotelFechaBean {
 		this.municipio= municipioFiltro;
 	}
 	
-	public String municipiobuscado() {
+	/*public MunicipiosDao municipiobuscado() {
 		MunicipiosDao hotel = DaoFactory.getInstance().getMunicipiosDao();
 		if(hotel!=null) {
-			return "searchResults";
+			return hotel;
 		}
 		else {
 			return null;
 		}
 		
 		
-	}
+	}*/
 }

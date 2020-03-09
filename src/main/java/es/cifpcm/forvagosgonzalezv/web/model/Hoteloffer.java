@@ -1,38 +1,48 @@
-/**
- * 
- */
 package es.cifpcm.forvagosgonzalezv.web.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.*;
+
 /**
- * @author vero_
- *
+ * The persistent class for the hoteloffer database table.
+ * 
  */
-public class Hoteloffer {
+@Entity
+@Table(name = "hoteloffer")
+@NamedQuery(name = "Hoteloffer.findAll", query = "SELECT h FROM Hoteloffer h")
+public class Hoteloffer implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name = "hotel_id")
 	private int hotelId;
 
+	@Column(name = "hotel_picture")
 	private String hotelPicture;
-	private String name;
+
+	@Column(name = "id_municipio")
 	private int idMunicipio;
+
+	private String name;
+
 	private BigDecimal price;
 
-	public Hoteloffer(String name, BigDecimal price, String hotelPicture, int idMunicipio) {
+	public Hoteloffer() {
+	}
+
+	public Hoteloffer(String name, BigDecimal price, String hotelPicture) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.name = name;
 		this.price = price;
 		this.hotelPicture = hotelPicture;
-		this.idMunicipio=idMunicipio;
 
-	}
-
-	public Hoteloffer() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getHotelId() {
-		return hotelId;
+		return this.hotelId;
 	}
 
 	public void setHotelId(int hotelId) {
@@ -40,7 +50,7 @@ public class Hoteloffer {
 	}
 
 	public String getHotelPicture() {
-		return hotelPicture;
+		return this.hotelPicture;
 	}
 
 	public void setHotelPicture(String hotelPicture) {
@@ -48,7 +58,7 @@ public class Hoteloffer {
 	}
 
 	public int getIdMunicipio() {
-		return idMunicipio;
+		return this.idMunicipio;
 	}
 
 	public void setIdMunicipio(int idMunicipio) {
@@ -56,7 +66,7 @@ public class Hoteloffer {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -64,10 +74,11 @@ public class Hoteloffer {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return this.price;
 	}
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+
 }

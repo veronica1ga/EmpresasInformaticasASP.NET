@@ -18,8 +18,14 @@
 				value="Regístrate" />
 			<h:button outcome="/login.xhtml" class="button" value="Identíficate" />
 			<br />
-			<h:graphicImage class="carro"
+			<div style="float: left; width: 20%;">
+				<h:graphicImage class="carro"
 				value="../resources/images/empty-cart-dark_small.png" />
+				<h:outputText id="lblTotal"
+					value="#{shoppingCartBean.totalAsString}" />
+			</div>
+
+			
 			<script type="text/javascript" src="../resources/javascript/prime.js"></script>
 		</ui:define>
 		<ui:define name="content" class="content">
@@ -61,10 +67,12 @@
 					placeholder="__/__/____" />
 				<br />
 				<br />
-				<p:commandButton value="Buscar" action="/searchResults" id="withIcon" class="button"
-					update="cboMunicipios" >
-					<f:setPropertyActionListener value="#{hotelSearchBean.id_municipio}" target="#{hotelSearchBean.municipiobuscado}"></f:setPropertyActionListener>
-					</p:commandButton>
+				<p:commandButton value="Buscar" action="searchResults.xhtml" id="withIcon"
+					class="button">
+					<f:setPropertyActionListener
+						value="#{hotelSearchBean.id_municipio}"
+						target="#{hotelSearchBean.id_municipio}"></f:setPropertyActionListener>
+				</p:commandButton>
 			</h:form>
 
 		</ui:define>

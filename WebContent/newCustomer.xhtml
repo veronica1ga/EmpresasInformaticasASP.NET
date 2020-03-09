@@ -18,14 +18,9 @@
 		</ui:define>
 		<ui:define name="content">
 			<h1>Vacaciones de lujo en Canarias</h1>
-			<h:link outcome="/search/indexsearch">
-				<h:graphicImage class="imagen" value="resources/images/canarias.jpg" />
-			</h:link>
-			<br />
-			<br />
-			<h:button outcome="/search/indexsearch" class="button" value="Buscar" />
-			<br />
-			<h:button outcome="/login" class="button" value="Identifícate" />
+			<h:form>
+			<h2>Bienvenido ${usuarioBean.userName}. Tiene permisos de ${usuarioBean.grupo}.</h2>
+			</h:form>
 		</ui:define>
 		<ui:define name="footer">
 		By Verónica González Almeida   
