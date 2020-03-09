@@ -83,14 +83,14 @@ public class UsersDaoImpl implements UsersDAO {
 
 	@Override
 	public String groupLogueado(String userName) {
-		//Boolean grupoUsuario=false;
 		String userGroup = null;
 		try {
 			String sql = "SELECT groups.group_name FROM users_groups INNER JOIN groups ON users_groups.group_id=groups.group_id WHERE user_name=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
+			//coge el valor de nombre del usuario
 			stmt.setString(1, userName);
 			ResultSet rs = stmt.executeQuery();
-			
+			//coge el valor del nombre de grupo relacionado con el nombre de usuario
 			while (rs.next()) {
 				userGroup=rs.getString("group_name");
 			}
@@ -100,7 +100,7 @@ public class UsersDaoImpl implements UsersDAO {
 		} catch (SQLException ex) {
 			logger.error("ERROR: {}", ex.getMessage());
 			ex.printStackTrace();
-		} /*finally { // Se cierra la conexión con la base de datos.
+		} finally { // Se cierra la conexión con la base de datos.
 			try {
 				if (conn != null) {
 					conn.close();
@@ -109,7 +109,7 @@ public class UsersDaoImpl implements UsersDAO {
 				logger.error("ERROR: {}", ex.getMessage());
 				ex.printStackTrace();
 			}
-		}*/
+		}
 		return userGroup;
 	}
 
