@@ -20,13 +20,7 @@ public class HotelResultsBean implements Serializable {
 	}
 
 	public List<Hoteloffer> getOffers() {
-		List<Hoteloffer> hoteles=SearchManager().getOffers(null);
-		return hoteles;
-	}
-
-	private SearchManager SearchManager() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SearchManager().getOffers(null);
 	}
 
 	/**

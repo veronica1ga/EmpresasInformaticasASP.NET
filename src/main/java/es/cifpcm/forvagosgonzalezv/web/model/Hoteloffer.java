@@ -5,24 +5,24 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
+
 /**
  * The persistent class for the hoteloffer database table.
  * 
  */
 @Entity
-@Table(name = "hoteloffer")
-@NamedQuery(name = "Hoteloffer.findAll", query = "SELECT h FROM Hoteloffer h")
+@NamedQuery(name="Hoteloffer.findAll", query="SELECT h FROM Hoteloffer h")
 public class Hoteloffer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "hotel_id")
+	@Column(name="hotel_id")
 	private int hotelId;
 
-	@Column(name = "hotel_picture")
+	@Column(name="hotel_picture")
 	private String hotelPicture;
 
-	@Column(name = "id_municipio")
+	@Column(name="id_municipio")
 	private int idMunicipio;
 
 	private String name;
@@ -34,7 +34,6 @@ public class Hoteloffer implements Serializable {
 
 	public Hoteloffer(String name, BigDecimal price, String hotelPicture) {
 		// TODO Auto-generated constructor stub
-		super();
 		this.name = name;
 		this.price = price;
 		this.hotelPicture = hotelPicture;

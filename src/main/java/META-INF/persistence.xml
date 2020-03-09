@@ -3,6 +3,7 @@
 	<persistence-unit name="ForVagosGonzalezV">
 		<class>es.cifpcm.forvagosgonzalezv.web.model.Customer</class>
 		<class>es.cifpcm.forvagosgonzalezv.web.model.Group</class>
+		<class>es.cifpcm.forvagosgonzalezv.web.model.User</class>
 		<class>es.cifpcm.forvagosgonzalezv.web.model.Hoteloffer</class>
 	</persistence-unit>
 </persistence>
