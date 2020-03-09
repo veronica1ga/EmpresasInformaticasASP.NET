@@ -3,4 +3,5 @@
 
 <hibernate-reverse-engineering>
   <table-filter match-schema="forvagos" match-name=".*"/>
+     <table-filter match-schema="forvagos" match-name="hoteloffer" />
 </hibernate-reverse-engineering>

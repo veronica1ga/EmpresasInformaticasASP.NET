@@ -14,7 +14,7 @@ import es.cifpcm.forvagosgonzalezv.web.bean2.DataBean;
 import es.cifpcm.forvagosgonzalezv.web.data.UsersDAO;
 import es.cifpcm.forvagosgonzalezv.web.data.UsersDaoImpl;
 import es.cifpcm.forvagosgonzalezv.web.model.User;
-import es.cifpcm.forvagosgonzalezv.web.model.UserGroup;
+import es.cifpcm.forvagosgonzalezv.web.model.Group;
 
 /**
  * @author Veronica Gonzalez
@@ -29,7 +29,7 @@ public class UsuarioBean extends User {
 	private String userName;
 	private String password;
 	private List<User> usuarios;
-	private List<UserGroup> grupo;
+	private String groupName;
 
 	@Inject
 	DataBean DataBean;
@@ -96,22 +96,24 @@ public class UsuarioBean extends User {
 	}
 
 	/**
-	 * @return the grupo
+	 * @return the groupName
 	 */
-	public List<UserGroup> getGrupo() {
-		return grupo;
+	public String getGroupName() {
+		return groupName;
 	}
 
 	/**
-	 * @param grupo the grupo to set
+	 * @param groupName the groupName to set
 	 */
-	public void setGrupo(List<UserGroup> grupo) {
-		this.grupo = grupo;
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
 	public String save() {
+		//permite comparar usuario y contraseña para ver si está en la base de datos o no
 		UsersDAO usuariodao = new UsersDaoImpl();
 		if (this.userName != null && usuariodao.userLogueado(this.userName, this.password) == true) {
+			groupName=usuariodao.groupLogueado(this.userName);
 			return "newCustomer";
 		}
 		else {

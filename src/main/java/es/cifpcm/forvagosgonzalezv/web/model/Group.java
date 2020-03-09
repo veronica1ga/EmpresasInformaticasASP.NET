@@ -1,33 +1,18 @@
 package es.cifpcm.forvagosgonzalezv.web.model;
 
-import java.io.Serializable;
-import javax.persistence.*;
-
-
-/**
- * The persistent class for the groups database table.
- * 
- */
-@Entity
-@Table(name="groups")
-@NamedQuery(name="Group.findAll", query="SELECT g FROM Group g")
-public class Group implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@Column(name="group_id")
+public class Group {
 	private int groupId;
 
 	private String description;
 
-	@Column(name="group_name")
 	private String groupName;
 
 	public Group() {
+
 	}
 
 	public int getGroupId() {
-		return this.groupId;
+		return groupId;
 	}
 
 	public void setGroupId(int groupId) {
@@ -35,7 +20,7 @@ public class Group implements Serializable {
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
@@ -43,7 +28,7 @@ public class Group implements Serializable {
 	}
 
 	public String getGroupName() {
-		return this.groupName;
+		return groupName;
 	}
 
 	public void setGroupName(String groupName) {

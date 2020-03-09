@@ -1,19 +1,10 @@
 package es.cifpcm.forvagosgonzalezv.web.bean;
 
-import java.io.Serializable;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.event.SelectEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import es.cifpcm.forvagosgonzalezv.web.data.DaoFactory;
 import es.cifpcm.forvagosgonzalezv.web.data.MunicipiosDao;
@@ -28,13 +19,15 @@ import es.cifpcm.forvagosgonzalezv.web.model.Provincia;
 @RequestScoped
 public class HotelSearchBean extends HotelFechaBean {
 	private static final long serialVersionUID = 1L;
-	private final Logger logger = LoggerFactory.getLogger(HotelSearchBean.class);
+	//private final Logger logger = LoggerFactory.getLogger(HotelSearchBean.class);
 
 	private Short id_provincia;
 	private Short id_municipio;
 
 	private List<Municipio> municipio;
 	private List<Provincia> provincia;
+	
+	
 	
 	
 	
@@ -45,10 +38,6 @@ public class HotelSearchBean extends HotelFechaBean {
 	public void init() {
 		this.municipio = masterDataBean.getMunicipios();
 		this.provincia = masterDataBean.getProvincias();
-
-		
-		
-		
 	}
 
 	/**
@@ -96,15 +85,15 @@ public class HotelSearchBean extends HotelFechaBean {
 		this.municipio= municipioFiltro;
 	}
 	
-	public String municipiobuscado() {
+	/*public MunicipiosDao municipiobuscado() {
 		MunicipiosDao hotel = DaoFactory.getInstance().getMunicipiosDao();
 		if(hotel!=null) {
-			return "searchResults";
+			return hotel;
 		}
 		else {
 			return null;
 		}
 		
 		
-	}
+	}*/
 }

@@ -7,11 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import es.cifpcm.forvagosgonzalezv.web.model.User;
-import es.cifpcm.forvagosgonzalezv.web.model.UserGroup;
 
 public class UsersDaoImpl implements UsersDAO {
 	private final org.slf4j.Logger logger = LoggerFactory.getLogger(UsersDaoImpl.class);
@@ -70,7 +68,7 @@ public class UsersDaoImpl implements UsersDAO {
 		} catch (SQLException ex) {
 			logger.error("ERROR: {}", ex.getMessage());
 			ex.printStackTrace();
-		} finally { // Se cierra la conexión con la base de datos.
+		} /*finally { // Se cierra la conexión con la base de datos.
 			try {
 				if (conn != null) {
 					conn.close();
@@ -79,25 +77,30 @@ public class UsersDaoImpl implements UsersDAO {
 				logger.error("ERROR: {}", ex.getMessage());
 				ex.printStackTrace();
 			}
-		}
+		}*/
 		return check;
 	}
 
 	@Override
-	public Boolean groupLogueado(String userGroup) {
-		Boolean grupoUsuario=false;
+	public String groupLogueado(String userName) {
+		//Boolean grupoUsuario=false;
+		String userGroup = null;
 		try {
-			//SELECT users.user_name, users.password, users_groups.group_id FROM users INNER JOIN users_groups ON users.user_id=users_groups.group_id where group_id=? 
-			String sql = "SELECT users.user_name, users.password, users_groups.group_id FROM users INNER JOIN users_groups ON users.user_id=users_groups.group_id where group_id=? ";
+			String sql = "SELECT groups.group_name FROM users_groups INNER JOIN groups ON users_groups.group_id=groups.group_id WHERE user_name=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setString(1, userGroup);
-				ResultSet rs = stmt.executeQuery();			
-				grupoUsuario=rs.first();
+			stmt.setString(1, userName);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				userGroup=rs.getString("group_name");
+			}
+				
+			//grupoUsuario=rs.first();
 			logger.info("Consulta OK: {}", sql);
 		} catch (SQLException ex) {
 			logger.error("ERROR: {}", ex.getMessage());
 			ex.printStackTrace();
-		} finally { // Se cierra la conexión con la base de datos.
+		} /*finally { // Se cierra la conexión con la base de datos.
 			try {
 				if (conn != null) {
 					conn.close();
@@ -106,8 +109,8 @@ public class UsersDaoImpl implements UsersDAO {
 				logger.error("ERROR: {}", ex.getMessage());
 				ex.printStackTrace();
 			}
-		}
-		return grupoUsuario;
+		}*/
+		return userGroup;
 	}
 
 }

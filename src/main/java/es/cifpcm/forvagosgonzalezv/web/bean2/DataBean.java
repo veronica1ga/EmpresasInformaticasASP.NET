@@ -17,7 +17,6 @@ public class DataBean {
 	private static final long serialVersionUID = 1L;
 
 	private List<User> usuarios = new ArrayList<User>();
-	private List<UserGroup> grupos_usuario = new ArrayList<UserGroup>();
 	/**
 	 * @return the usuarios
 	 */
@@ -29,18 +28,6 @@ public class DataBean {
 	 */
 	public void setUsuarios(List<User> usuarios) {
 		this.usuarios = usuarios;
-	}
-	/**
-	 * @return the grupos_usuario
-	 */
-	public List<UserGroup> getGrupos_usuario() {
-		return grupos_usuario;
-	}
-	/**
-	 * @param grupos_usuario the grupos_usuario to set
-	 */
-	public void setGrupos_usuario(List<UserGroup> grupos_usuario) {
-		this.grupos_usuario = grupos_usuario;
 	}
 
 	/**

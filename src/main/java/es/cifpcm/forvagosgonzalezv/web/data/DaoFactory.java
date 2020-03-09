@@ -83,6 +83,10 @@ public class DaoFactory implements ConnectionProvider{
 
         return new ProvDaoImpl();
     }
+    
+    public UsersDAO getUsersDao() {
+    	return new UsersDaoImpl();
+    }
 
    
 }

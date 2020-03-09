@@ -15,12 +15,19 @@ public class HotelResultsBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Hoteloffer selectedOffer;
+	private Short idMunicipio;
 
 	public HotelResultsBean() {
 	}
 
 	public List<Hoteloffer> getOffers() {
-		return new SearchManager().getOffers(null);
+		List<Hoteloffer> hoteles=SearchManager().getOffers(null);
+		return hoteles;
+	}
+
+	private SearchManager SearchManager() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
@@ -35,6 +42,20 @@ public class HotelResultsBean implements Serializable {
 	 */
 	public void setSelectedOffer(Hoteloffer selectedOffer) {
 		this.selectedOffer = selectedOffer;
+	}
+
+	/**
+	 * @return the idMunicipio
+	 */
+	public Short getIdMunicipio() {
+		return idMunicipio;
+	}
+
+	/**
+	 * @param idMunicipio the idMunicipio to set
+	 */
+	public void setIdMunicipio(Short idMunicipio) {
+		this.idMunicipio = idMunicipio;
 	}
 
 }
